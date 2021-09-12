@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <!-- CSS読込 -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/login/login.css}">
+    <!-- JS読込 -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+
+    <title>ログイン</title>
+</head>
+<body class="text-center">
+    <h1>LOG IN</h1>
+    <form method="post" action="/login">
+    <!-- ユーザーネーム -->
+        <div id=login-form>
+        <span class="far fa-user fa-border icon"></span>
+        <input type="text" placeholder="ユーザーネーム"/><br/>
+        </div>
+        <br />
+     <!-- パスワード -->
+        <div id=login-form>
+        <span class="fas fa-key fa-border icon"></span>
+        <input type="password" placeholder="パスワード"/><br/>
+        </div>
+        <br />
+     <!--  ログイン状態維持 -->
+        <p>
+        <input type="checkbox">ログイン状態を維持する
+        </p>
+　　  <!-- ログインボタン -->
+        <button class="btn btn-primary" type="submit">ログイン</button>
+    </form>
+    <br />
+    <!-- 新規登録 -->
+    <div class="btn-a">
+    <a th:href="@{'/user/signup'}">新規登録はこちら</a>
+    </div>
+</body>
+</html>
