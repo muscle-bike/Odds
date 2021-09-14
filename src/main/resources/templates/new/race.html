@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- CSS読込 -->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/new/race.css}">
+  <!-- JS読込 -->
+  <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+  <title>レース情報入力</title>
+</head>
+
+<body>
+  <div class="race_home">
+      <h1>レース情報入力</h1>
+
+      <form id="signup-form" class="form-signup" th:method="post">
+
+        <!-- 日付 -->
+        <div class="data">
+          <p>日　付</p>
+          <p>:</p>
+          <label for="date">
+          <input type="text" class="form-control"/>
+          </label>
+        </div>
+
+        <!-- レース名 -->
+        <div class="data">
+          <p>レース名</p>
+          <p>:</p>
+          <label for="race_name">
+          <input type="text"  class="form-control"/>
+          </label>
+        </div>
+
+        <!-- レース場 -->
+        <div class="data">
+          <p>レース場</p>
+          <p>:</p>
+          <label for="race_field">
+          <input type="text"  class="form-control"/>
+          </label>
+        </div>
+
+        <!-- 支出額 -->
+        <div class="data">
+          <p>支出額</p>
+          <p>:</p>
+           <label for="expenditure">
+          <input type="text"  class="form-control"/>
+          </label>
+        </div>
+
+        <!-- 収入 -->
+        <div class="data">
+          <p>収入額</p>
+          <p>:</p>
+          <label for="income_amount">
+          <input type="text"  class="form-control"/>
+          </label>
+        </div>
+
+        <!-- 確定ボタン -->
+        <div class=confirm_btn>
+            <input type="submit" value="確定" class="btn btn-primary w20 mt-3" />
+        </div>
+      </form>
+  </div>
+</body>
+</html>
+
+

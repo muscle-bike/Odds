@@ -1,0 +1,36 @@
+@charset "UTF-8";
+body {
+    width: 1090px;
+    margin: 0 auto;
+    background: #f8f9fa!important;
+}
+
+.race_home {
+    width: 50%;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 50px 0 100px 0;
+    text-align: center;
+}
+
+.data {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+p{
+    width: 15%;
+    font-size: 20px;
+    text-align: center;
+}
+label {
+    width: 70%;
+}
+
+
+.confirm_btn {
+    display: flex;
+    justify-content: flex-end;
+}
