@@ -42,6 +42,6 @@ public class RacingModel {
     private Integer expenditure;
 
 //    支出額
-    @Column(name = "Income_amount", length = 30, nullable = false)
-    private Integer Income_amount;
+    @Column(name = "income_amount", length = 30, nullable = false)
+    private Integer income_amount;
 }

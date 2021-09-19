@@ -13,17 +13,23 @@
 </head>
 
 <body>
+
+<!-- エラーがあれば表示 -->
+  <div th:if="${validationError}" th:each="error : ${validationError}">
+     <label class="text-danger" th:text="${error}"></label>
+  </div>
+
   <div class="race_home">
       <h1>レース情報入力</h1>
 
-      <form id="signup-form" class="form-signup" th:method="post">
+      <form id="race-form" class="form-race" th:method="post" th:action="@{/racing_infos/create}" th:object="${racingRequest}">
 
         <!-- 日付 -->
         <div class="data">
           <p>日　付</p>
           <p>:</p>
           <label for="date">
-          <input type="text" class="form-control"/>
+          <input type="date" class="form-control" th:field="*{date}"/>
           </label>
         </div>
 
@@ -31,8 +37,8 @@
         <div class="data">
           <p>レース名</p>
           <p>:</p>
-          <label for="race_name">
-          <input type="text"  class="form-control"/>
+          <label for="racing_name">
+          <input type="text"  class="form-control" th:field="*{racing_name}"/>
           </label>
         </div>
 
@@ -40,8 +46,8 @@
         <div class="data">
           <p>レース場</p>
           <p>:</p>
-          <label for="race_field">
-          <input type="text"  class="form-control"/>
+          <label for="racing_place">
+          <input type="text"  class="form-control" th:field="*{racing_place}"/>
           </label>
         </div>
 
@@ -50,7 +56,7 @@
           <p>支出額</p>
           <p>:</p>
            <label for="expenditure">
-          <input type="text"  class="form-control"/>
+          <input type="number"  class="form-control" th:field="*{expenditure}"/>
           </label>
         </div>
 
@@ -59,7 +65,7 @@
           <p>収入額</p>
           <p>:</p>
           <label for="income_amount">
-          <input type="text"  class="form-control"/>
+          <input type="number"  class="form-control" th:field="*{income_amount}"/>
           </label>
         </div>
 
