@@ -3,27 +3,22 @@
 <head>
   <th:block th:insert="/fragments/head :: head"></th:block>
   <link rel="stylesheet" th:href="@{/css/new/race.css}">
-  <title>レース情報入力</title>
+  <title>編集</title>
 </head>
 
 <body>
 
-<!-- エラーがあれば表示 -->
-  <div th:if="${validationError}" th:each="error : ${validationError}">
-     <label class="text-danger" th:text="${error}"></label>
-  </div>
-
   <div class="race_home">
-      <h1>レース情報入力</h1>
+      <h1>編集画面</h1>
 
-      <form id="race-form" class="form-race" th:method="post" th:action="@{/racing_infos/create}" th:object="${racingRequest}">
+      <form id="race-form" class="form-race" >
 
         <!-- 日付 -->
         <div class="data">
           <p>日　付</p>
           <p>:</p>
           <label for="date">
-          <input type="date" class="form-control" th:field="*{date}"/>
+          <input type="date" class="form-control" />
           </label>
         </div>
 
@@ -32,7 +27,7 @@
           <p>レース名</p>
           <p>:</p>
           <label for="racing_name">
-          <input type="text"  class="form-control" th:field="*{racing_name}"/>
+          <input type="text"  class="form-control" />
           </label>
         </div>
 
@@ -41,7 +36,7 @@
           <p>レース場</p>
           <p>:</p>
           <label for="racing_place">
-          <input type="text"  class="form-control" th:field="*{racing_place}"/>
+          <input type="text"  class="form-control" />
           </label>
         </div>
 
@@ -50,7 +45,7 @@
           <p>支出額</p>
           <p>:</p>
            <label for="expenditure">
-          <input type="number"  class="form-control" th:field="*{expenditure}"/>
+          <input type="number"  class="form-control" />
           </label>
         </div>
 
@@ -59,13 +54,14 @@
           <p>収入額</p>
           <p>:</p>
           <label for="income_amount">
-          <input type="number"  class="form-control" th:field="*{income_amount}"/>
+          <input type="number"  class="form-control" />
           </label>
         </div>
 
         <!-- 確定ボタン -->
         <div class=confirm_btn>
             <input type="submit" value="確定" class="btn btn-primary w20 mt-3" />
+            <input type="submit" value="削除" class="btn btn-primary w20 mt-3" />
         </div>
       </form>
   </div>
