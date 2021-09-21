@@ -1,4 +1,4 @@
-package com.portfolio.file.dto;
+package com.portfolio.file.form;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,8 +14,11 @@ import lombok.Data;
 
 @Data
 public class RacingRequest implements Serializable {
+    /** シリアルバージョンUID. */
+    private static final long serialVersionUID = 1L;
+
 //  日付
-//    @NotEmpty(message = "日付を入力してください")
+//  @NotEmpty(message = "日付を入力してください")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 

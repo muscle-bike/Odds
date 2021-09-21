@@ -1,4 +1,4 @@
-package com.portfolio.file.dto;
+package com.portfolio.file.form;
 
 import java.io.Serializable;
 
@@ -11,6 +11,8 @@ import lombok.Data;
      */
     @Data
     public class UserRequest implements Serializable {
+      /** シリアルバージョンUID. */
+      private static final long serialVersionUID = 1L;
       /**
        * 名前
        */
@@ -20,6 +22,7 @@ import lombok.Data;
       /**
        * パスワード
        */
+      @NotEmpty(message = "パスワードを入力してください")
       @Size(max = 18, message = "パスワードは18桁以内で入力してください")
       private String password;
     }

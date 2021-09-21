@@ -7,18 +7,21 @@
 </head>
 
 <body>
-
   <div class="race_home">
       <h1>編集画面</h1>
 
-      <form id="race-form" class="form-race" >
-
+      <form id="race-form" class="form-race" th:action="@{/racing_infos/update}" th:object="${RacingUpdateRequest}" th:method="post">
+      <input type="hidden" th:field="*{id}" />
         <!-- 日付 -->
         <div class="data">
           <p>日　付</p>
           <p>:</p>
           <label for="date">
-          <input type="date" class="form-control" />
+          <input type="date" class="form-control" th:field="*{date}"/>
+          <span class="text-danger"
+                th:if="${#fields.hasErrors('date')}"
+                th:errors="*{date}">
+          </span>
           </label>
         </div>
 
@@ -27,7 +30,11 @@
           <p>レース名</p>
           <p>:</p>
           <label for="racing_name">
-          <input type="text"  class="form-control" />
+          <input type="text"  class="form-control" th:field="*{racing_name}"/>
+          <span class="text-danger"
+                th:if="${#fields.hasErrors('racing_name')}"
+                th:errors="*{racing_name}">
+          </span>
           </label>
         </div>
 
@@ -36,7 +43,11 @@
           <p>レース場</p>
           <p>:</p>
           <label for="racing_place">
-          <input type="text"  class="form-control" />
+          <input type="text"  class="form-control" th:field="*{racing_place}"/>
+           <span class="text-danger"
+                th:if="${#fields.hasErrors('racing_place')}"
+                th:errors="*{racing_place}">
+          </span>
           </label>
         </div>
 
@@ -45,7 +56,11 @@
           <p>支出額</p>
           <p>:</p>
            <label for="expenditure">
-          <input type="number"  class="form-control" />
+          <input type="number"  class="form-control" th:field="*{expenditure}"/>
+           <span class="text-danger"
+                th:if="${#fields.hasErrors('expenditure')}"
+                th:errors="*{expenditure}">
+          </span>
           </label>
         </div>
 
@@ -54,7 +69,11 @@
           <p>収入額</p>
           <p>:</p>
           <label for="income_amount">
-          <input type="number"  class="form-control" />
+          <input type="number"  class="form-control" th:field="*{income_amount}"/>
+          <span class="text-danger"
+                th:if="${#fields.hasErrors('income_amount')}"
+                th:errors="*{income_amount}">
+          </span>
           </label>
         </div>
 

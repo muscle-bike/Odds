@@ -8,6 +8,6 @@ import com.portfolio.file.model.RacingModel;
  * Racing(Entity)クラスのリポジトリクラス.
  */
 @Repository
-public interface RacingRepository extends JpaRepository<RacingModel, String> {
+public interface RacingRepository extends JpaRepository<RacingModel, Integer> {
 
 }

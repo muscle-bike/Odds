@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.portfolio.file.dto.UserRequest;
+import com.portfolio.file.form.UserRequest;
 import com.portfolio.file.model.UserModel;
 import com.portfolio.file.repository.UserRepository;
 

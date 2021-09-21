@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 //  Getメソッド
    @GetMapping("/home")
-   public String getLogin(Model model) {
+   public String getHome(Model model) {
 //     login.htmlに遷移
        return "home/home";
    }
 
 // Postメソッド
    @PostMapping("/home")
-   public String postLogin(Model model) {
+   public String postHome(Model model) {
        return "home/home";
    }
 }

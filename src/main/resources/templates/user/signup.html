@@ -8,10 +8,6 @@
 
 <body class="bg-light">
 
-<!-- エラーがあれば表示 -->
-  <div th:if="${validationError}" th:each="error : ${validationError}">
-     <label class="text-danger" th:text="${error}"></label>
-  </div>
   <h1 class="text-center">新規登録</h1>
 
   <form id="signup-form" class="form-signup" th:method="post" th:action="@{/user/create}" th:object="${userRequest}">
@@ -20,6 +16,11 @@
     <div class="form-group">
       <label for="username">
       <input type="text" th:field="*{name}" class="form-control"  placeholder="ユーザーネーム"/>
+      <!-- エラーがあれば表示 -->
+      <span class="text-danger"
+            th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}">
+      </span>
       </label>
     </div>
 
@@ -27,6 +28,11 @@
     <div class="form-group">
       <label for="password">
       <input type="password" th:field="*{password}" class="form-control"  placeholder="パスワード"/>
+      <!-- エラーがあれば表示 -->
+      <span class="text-danger"
+            th:if="${#fields.hasErrors('password')}"
+            th:errors="*{password}">
+      </span>
       </label>
     </div>
 
