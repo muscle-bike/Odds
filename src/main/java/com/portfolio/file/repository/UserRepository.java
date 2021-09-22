@@ -10,6 +10,7 @@ import com.portfolio.file.model.UserModel;
  */
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, String> {
+    UserModel findByUsername(String username);
     /**
      * ユーザー名に紐付くUser(Entity)クラスの件数を取得.
      *

@@ -7,14 +7,12 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.portfolio.file.form.RacingRequest;
 import com.portfolio.file.form.RacingUpdateRequest;
 import com.portfolio.file.model.RacingModel;
-//import com.portfolio.file.model.RacingModel;
 import com.portfolio.file.service.RacingService;
 
 @Controller
@@ -34,7 +32,7 @@ public class RacingController {
 // レース情報編集画面を表示
    @GetMapping(value ="/edit/edit/{id}")
        public String displayEdit(@PathVariable Integer id, Model model) {
-           RacingModel racing_infos = RacingService.findById(id);
+           RacingModel racing_infos = racingService.findById(id);
            RacingUpdateRequest racingUpdateRequest = new RacingUpdateRequest();
            racingUpdateRequest.setId(racing_infos.getId());
            racingUpdateRequest.setDate(racing_infos.getDate());
@@ -53,7 +51,7 @@ public class RacingController {
        if (result.hasErrors()) {
            return "new/race";
          }
-//          ユーザー情報の登録
+//ユーザー情報の登録
          racingService.create(racingRequest);
          return "redirect:/home";
    }
@@ -66,6 +64,14 @@ public class RacingController {
      // ユーザー情報の更新
      racingService.update(racingUpdateRequest);
      return String.format("redirect:/racing_infos/%d", racingUpdateRequest.getId());
+   }
+
+//レース情報削除（idを削除する）
+   @GetMapping("/racing_infos/delete/{id}")
+   public String delete(@PathVariable Integer id, Model model) {
+     // ユーザー情報の削除
+     racingService.delete(id);
+     return "redirect:/home";
    }
  }
 

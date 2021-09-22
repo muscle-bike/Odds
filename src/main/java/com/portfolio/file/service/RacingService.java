@@ -14,7 +14,7 @@ import com.portfolio.file.repository.RacingRepository;
 @Transactional(rollbackFor = Exception.class)
 public class RacingService {
 @Autowired
-private static RacingRepository racingRepository;
+private RacingRepository racingRepository;
 
 //レース情報全検索
 public List<RacingModel> seachAll() {
@@ -22,8 +22,8 @@ public List<RacingModel> seachAll() {
 }
 
 //レース情報 ID(主キー)検索
-public static RacingModel findById(Integer id) {
-    return racingRepository.findById(id).get();
+public  RacingModel findById(Integer id) {
+    return racingRepository.getOneData(id);
 }
 
 //レース情報登録
@@ -46,4 +46,10 @@ public void update(RacingUpdateRequest racingUpdateRequest) {
     racing_infos.setIncome_amount(racingUpdateRequest.getIncome_amount());
     racingRepository.save(racing_infos);
 }
+
+//レース情報削除
+public void delete(Integer id) {
+    RacingModel racing_infos = findById(id);
+    racingRepository.delete(racing_infos);
+  }
 }
