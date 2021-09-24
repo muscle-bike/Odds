@@ -19,32 +19,33 @@ import lombok.Setter;
 @Entity
 @Table(name = "racing_infos")
 public class RacingModel {
-//    id,PK
+    //id,PK
     @Id
     @Column(name = "id", length = 30, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    日付
+    //日付
     @Column(name = "date", nullable = false)
     private Date date;
 
-//    レース名
+    //レース名
     @Column(name = "racing_name", length = 30, nullable = false)
     private String racing_name;
 
-//    レース場
+    //レース場
     @Column(name = "racing_place", length = 30, nullable = false)
     private String racing_place;
 
-//    支出額
+    //支出額
     @Column(name = "expenditure", length = 30, nullable = false)
     private Integer expenditure;
 
-//    支出額
+    //支出額
     @Column(name = "income_amount", length = 30, nullable = false)
     private Integer income_amount;
 
+    //ログイン中のユーザ
     @Column(name = "username", nullable = false)
     private String username;
 

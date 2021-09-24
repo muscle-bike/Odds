@@ -19,19 +19,19 @@ import com.portfolio.file.service.RacingService;
 
 @Controller
 public class RacingController {
-//   レース情報 Service
+    //レース情報 Service
     @Autowired
     private RacingService racingService;
-//  Getメソッド
-//  レース情報新規登録画面表示
+    //Getメソッド
+    //レース情報新規登録画面表示
    @GetMapping(value ="/new/race")
    public String displayRace(Model model) {
        model.addAttribute("racingRequest", new RacingRequest());
-//     レース情報登録画面に遷移
+       //レース情報登録画面に遷移
        return "new/race";
    }
 
-// レース情報編集画面を表示
+   //レース情報編集画面を表示
    @GetMapping(value ="/edit/edit/{id}")
        public String displayEdit(@PathVariable Integer id, Model model) {
            RacingModel racing_infos = racingService.findById(id);
@@ -47,21 +47,22 @@ public class RacingController {
    }
 
    RacingModel racingmodel = new RacingModel();
-//レース情報クリエイト
+   //レース情報クリエイト
    @RequestMapping(value = "/racing_infos/create", method = RequestMethod.POST)
+
    public String create(@Validated @ModelAttribute RacingRequest racingRequest, BindingResult result, Model model,
            @AuthenticationPrincipal UserDetailsImpl userDetails) {
        if (result.hasErrors()) {
            return "new/race";
          }
+
        String loginUser = userDetails.getUsername();
-       racingmodel.setUsername(loginUser);
-//ユーザー情報の登録
-         racingService.create(racingRequest);
+       //ユーザー情報の登録
+         racingService.create(racingRequest, loginUser);
          return "redirect:/home";
    }
 
-//レース情報の更新
+   //レース情報の更新
    @RequestMapping(value = "/racing_infos/update", method = RequestMethod.POST)
    public String update(@Validated @ModelAttribute RacingUpdateRequest racingUpdateRequest, BindingResult result, Model model) {
      if (result.hasErrors()) {
@@ -72,7 +73,7 @@ public class RacingController {
      return String.format("redirect:/racing_infos/%d", racingUpdateRequest.getId());
    }
 
-//レース情報削除（idを削除する）
+   //レース情報削除（idを削除する）
    @GetMapping("/racing_infos/delete/{id}")
    public String delete(@PathVariable Integer id, Model model) {
      // ユーザー情報の削除

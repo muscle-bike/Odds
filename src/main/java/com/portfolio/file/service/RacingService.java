@@ -27,14 +27,14 @@ public  RacingModel findById(Integer id) {
 }
 
 //レース情報登録
-public void create(RacingRequest racingRequest) {
+public void create(RacingRequest racingRequest, String operationUser) {
     RacingModel racing_infos = new RacingModel();
     racing_infos.setDate(racingRequest.getDate());
     racing_infos.setRacing_name(racingRequest.getRacing_name());
     racing_infos.setRacing_place(racingRequest.getRacing_place());
     racing_infos.setExpenditure(racingRequest.getExpenditure());
     racing_infos.setIncome_amount(racingRequest.getIncome_amount());
-    racing_infos.setUsername(racingRequest.getUsername());
+    racing_infos.setUsername(operationUser);
     racingRepository.save(racing_infos);
  }
 
@@ -53,4 +53,6 @@ public void delete(Integer id) {
     RacingModel racing_infos = findById(id);
     racingRepository.delete(racing_infos);
   }
+
+
 }
