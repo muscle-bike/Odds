@@ -7,24 +7,25 @@
 </head>
 <body class="text-center">
     <h1>LOG IN</h1>
-    <form method="post" action="/login">
+    <p th:if="${param.error}">ログインに失敗しました</p>
+    <form method="post" th:action="@{/login}">
     <!-- ユーザーネーム -->
         <div id=login-form>
         <span class="far fa-user fa-border icon"></span>
-        <input type="text" placeholder="ユーザーネーム"/><br/>
+        <input type="text" placeholder="ユーザーネーム" name="username" /><br/>
         </div>
         <br />
      <!-- パスワード -->
         <div id=login-form>
         <span class="fas fa-key fa-border icon"></span>
-        <input type="password" placeholder="パスワード"/><br/>
+        <input type="password" placeholder="パスワード" name="password" /><br/>
         </div>
         <br />
      <!--  ログイン状態維持 -->
         <p>
         <input type="checkbox">ログイン状態を維持する
         </p>
-　　  <!-- ログインボタン -->
+    <!-- ログインボタン -->
         <button class="btn btn-primary" type="submit">ログイン</button>
     </form>
     <br />

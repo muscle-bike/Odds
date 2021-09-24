@@ -44,4 +44,11 @@ public class RacingModel {
 //    支出額
     @Column(name = "income_amount", length = 30, nullable = false)
     private Integer income_amount;
+
+    @Column(name = "username", nullable = false)
+    private String username;
+
+
 }
+
+

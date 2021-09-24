@@ -1,5 +1,6 @@
 package com.portfolio.file.controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.portfolio.file.form.RacingRequest;
 import com.portfolio.file.form.RacingUpdateRequest;
 import com.portfolio.file.model.RacingModel;
+import com.portfolio.file.model.impl.UserDetailsImpl;
 import com.portfolio.file.service.RacingService;
 
 @Controller
@@ -44,17 +46,21 @@ public class RacingController {
        return "edit/edit";
    }
 
-
+   RacingModel racingmodel = new RacingModel();
 //レース情報クリエイト
    @RequestMapping(value = "/racing_infos/create", method = RequestMethod.POST)
-   public String create(@Validated @ModelAttribute RacingRequest racingRequest, BindingResult result, Model model) {
+   public String create(@Validated @ModelAttribute RacingRequest racingRequest, BindingResult result, Model model,
+           @AuthenticationPrincipal UserDetailsImpl userDetails) {
        if (result.hasErrors()) {
            return "new/race";
          }
+       String loginUser = userDetails.getUsername();
+       racingmodel.setUsername(loginUser);
 //ユーザー情報の登録
          racingService.create(racingRequest);
          return "redirect:/home";
    }
+
 //レース情報の更新
    @RequestMapping(value = "/racing_infos/update", method = RequestMethod.POST)
    public String update(@Validated @ModelAttribute RacingUpdateRequest racingUpdateRequest, BindingResult result, Model model) {
@@ -74,5 +80,3 @@ public class RacingController {
      return "redirect:/home";
    }
  }
-
-

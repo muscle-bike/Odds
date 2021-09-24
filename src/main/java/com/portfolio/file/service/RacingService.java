@@ -34,6 +34,7 @@ public void create(RacingRequest racingRequest) {
     racing_infos.setRacing_place(racingRequest.getRacing_place());
     racing_infos.setExpenditure(racingRequest.getExpenditure());
     racing_infos.setIncome_amount(racingRequest.getIncome_amount());
+    racing_infos.setUsername(racingRequest.getUsername());
     racingRepository.save(racing_infos);
  }
 

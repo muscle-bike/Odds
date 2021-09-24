@@ -42,5 +42,8 @@ public class RacingRequest implements Serializable {
     @Digits(integer = 30, fraction = 0, message = "支出額は30桁以内で入力してください")
     private Integer income_amount;
 
+    @NotEmpty
+    private String username;
+
 
 }

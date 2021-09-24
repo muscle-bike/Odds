@@ -25,7 +25,7 @@ public class LoginController {
      *
      * @return 遷移先
      */
-    @PostMapping("success")
+    @PostMapping("/success")
     public String loginSuccess() {
         // HOME画面に遷移する
         return REDIRECT_HOME_URL;
