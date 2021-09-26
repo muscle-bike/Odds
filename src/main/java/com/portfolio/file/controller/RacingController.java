@@ -45,8 +45,8 @@ public class RacingController {
            model.addAttribute("RacingUpdateRequest", racingUpdateRequest);
        return "edit/edit";
    }
-
    RacingModel racingmodel = new RacingModel();
+
    //レース情報クリエイト
    @RequestMapping(value = "/racing_infos/create", method = RequestMethod.POST)
 

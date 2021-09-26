@@ -26,6 +26,11 @@ public  RacingModel findById(Integer id) {
     return racingRepository.getOneData(id);
 }
 
+//レース情報 username検索
+public RacingModel findByCreateUser(String createUser) {
+    return racingRepository.findByCreateUser(createUser);
+}
+
 //レース情報登録
 public void create(RacingRequest racingRequest, String operationUser) {
     RacingModel racing_infos = new RacingModel();
@@ -54,5 +59,9 @@ public void delete(Integer id) {
     racingRepository.delete(racing_infos);
   }
 
-
+//racing_infosのusernameを取得
+//public void view(String createUser) {
+//    RacingModel racing_infos = new RacingModel();
+//    findByCreateUser(racing_infos.getUsername());
+// }
 }

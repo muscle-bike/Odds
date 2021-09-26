@@ -6,6 +6,8 @@
 </head>
 <body class="text-center">
     <h1>Home</h1>
+    <div sec:authentication="principal"></div>
+    <div th:text="${#authentication.principal}"></div>
     <!-- 新規登録 -->
     <div class="btn-a">
     <a th:href="@{'/new/race'}">レース情報登録</a>

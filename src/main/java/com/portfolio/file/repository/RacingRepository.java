@@ -10,7 +10,9 @@ import com.portfolio.file.model.RacingModel;
  * Racing(Entity)クラスのリポジトリクラス.
  */
 @Repository
-public interface RacingRepository extends JpaRepository<RacingModel, Integer> {
+public interface RacingRepository extends JpaRepository<RacingModel, Integer>{
     @Query("SELECT r FROM RacingModel r WHERE r.id = :id")
     RacingModel getOneData(@Param("id")Integer id);
+    @Query("SELECT r FROM RacingModel r WHERE r.createUser = :createUser")
+    RacingModel findByCreateUser(@Param("CreateUser")String createUser);
 }

@@ -1,13 +1,19 @@
 package com.portfolio.file.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.portfolio.file.model.impl.UserDetailsImpl;
+//import com.portfolio.file.service.RacingService;
 @Controller
 public class HomeController {
+    @Autowired
+//    private RacingService racingService;
+
     // Getメソッド
     @GetMapping("/home")
     public String getHome(Model model) {
@@ -43,12 +49,12 @@ public class HomeController {
  * HOME画面表示.
  *
  * @param model       Modelクラス
- * @param pageable    ページネーション情報（デフォルト[1ページ目、6件表示、更新日時の新しい順でソート])
  * @param userDetails ログインユーザーの詳細情報
  * @return 遷移先
  */
+
 @GetMapping("home/home")
-public String index(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+public String index(@PathVariable String username, Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         model.addAttribute("url", HOME_URL);
 
     // ログインユーザーの詳細情報を判定
@@ -58,9 +64,18 @@ public String index(Model model, @AuthenticationPrincipal UserDetailsImpl userDe
     } else {
         // ログインユーザーの詳細情報がNULL以外の場合
         model.addAttribute("loginUsername", userDetails.getUsername());
-    }
+//        String loginUser = userDetails.getUsername();
+        //ユーザー情報の登録
+//          racingService.view(loginUser);
 
+//        RacingModel racing_infos = racingService.search();
+    }
     return HOME_TEMPLATE_PATH;
 }
+
+
+
+
+
 
 }
