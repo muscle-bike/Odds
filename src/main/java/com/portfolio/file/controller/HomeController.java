@@ -7,15 +7,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.portfolio.file.form.RacingRequest;
 import com.portfolio.file.model.impl.UserDetailsImpl;
-//import com.portfolio.file.service.RacingService;
+import com.portfolio.file.service.RacingService;
 @Controller
 public class HomeController {
     @Autowired
-//    private RacingService racingService;
+    private RacingService racingService;
 
     // Getメソッド
-    @GetMapping("/home")
+    @GetMapping("")
     public String getHome(Model model) {
         //  login.htmlに遷移
         return "home/home";
@@ -39,7 +40,7 @@ public class HomeController {
      *
      * @return 遷移先(HOME画面)
      */
-    @GetMapping("")
+    @GetMapping("/home")
     public String index() {
         // HOME画面に遷移する
         return REDIRECT_HOME_URL;
@@ -54,7 +55,7 @@ public class HomeController {
  */
 
 @GetMapping("home/home")
-public String index(@PathVariable String username, Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+public String index(@PathVariable String username,  RacingRequest racingRequest, Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         model.addAttribute("url", HOME_URL);
 
     // ログインユーザーの詳細情報を判定
@@ -64,11 +65,9 @@ public String index(@PathVariable String username, Model model, @AuthenticationP
     } else {
         // ログインユーザーの詳細情報がNULL以外の場合
         model.addAttribute("loginUsername", userDetails.getUsername());
-//        String loginUser = userDetails.getUsername();
-        //ユーザー情報の登録
-//          racingService.view(loginUser);
+        String loginUser = userDetails.getUsername();
 
-//        RacingModel racing_infos = racingService.search();
+        racingService.view(racingRequest, loginUser);
     }
     return HOME_TEMPLATE_PATH;
 }

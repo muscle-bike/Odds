@@ -48,8 +48,4 @@ public class RacingModel {
     //ログイン中のユーザ
     @Column(name = "username", nullable = false)
     private String username;
-
-
 }
-
-

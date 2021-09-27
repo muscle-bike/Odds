@@ -1,4 +1,6 @@
 package com.portfolio.file.repository;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,6 +15,6 @@ import com.portfolio.file.model.RacingModel;
 public interface RacingRepository extends JpaRepository<RacingModel, Integer>{
     @Query("SELECT r FROM RacingModel r WHERE r.id = :id")
     RacingModel getOneData(@Param("id")Integer id);
-    @Query("SELECT r FROM RacingModel r WHERE r.createUser = :createUser")
-    RacingModel findByCreateUser(@Param("CreateUser")String createUser);
+    @Query("SELECT r FROM RacingModel r WHERE r.username = :username")
+    List<RacingModel> findByUsername(@Param("username")String username);
 }
