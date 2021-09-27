@@ -62,5 +62,6 @@ public void delete(Integer id) {
 public void view(RacingRequest racingRequest, String operationUser) {
     RacingModel racing_infos = new RacingModel();
     racing_infos.setUsername(operationUser);
+    racingRepository.save(racing_infos);
  }
 }
