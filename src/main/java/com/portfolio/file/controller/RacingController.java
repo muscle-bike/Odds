@@ -49,7 +49,6 @@ public class RacingController {
 
    //レース情報クリエイト
    @RequestMapping(value = "/racing_infos/create", method = RequestMethod.POST)
-
    public String create(@Validated @ModelAttribute RacingRequest racingRequest, BindingResult result, Model model,
            @AuthenticationPrincipal UserDetailsImpl userDetails) {
        if (result.hasErrors()) {

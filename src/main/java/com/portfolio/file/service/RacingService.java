@@ -20,7 +20,7 @@ private RacingRepository racingRepository;
 public List<RacingModel> seachAll() {
     return racingRepository.findAll();
 }
-
+//ユーザー名検索
 public List<RacingModel> findByUsername(String username){
     return racingRepository.findByUsername(username);
 }
@@ -31,14 +31,14 @@ public  RacingModel findById(Integer id) {
 }
 
 //レース情報登録
-public void create(RacingRequest racingRequest, String operationUser) {
+public void create(RacingRequest racingRequest, String loginUser) {
     RacingModel racing_infos = new RacingModel();
     racing_infos.setDate(racingRequest.getDate());
     racing_infos.setRacing_name(racingRequest.getRacing_name());
     racing_infos.setRacing_place(racingRequest.getRacing_place());
     racing_infos.setExpenditure(racingRequest.getExpenditure());
     racing_infos.setIncome_amount(racingRequest.getIncome_amount());
-    racing_infos.setUsername(operationUser);
+    racing_infos.setUsername(loginUser);
     racingRepository.save(racing_infos);
  }
 
@@ -59,9 +59,8 @@ public void delete(Integer id) {
   }
 
 //racing_infosのusernameを取得
-public void view(RacingRequest racingRequest, String operationUser) {
+public void view( String operationUser) {
     RacingModel racing_infos = new RacingModel();
     racing_infos.setUsername(operationUser);
-    racingRepository.save(racing_infos);
  }
 }
