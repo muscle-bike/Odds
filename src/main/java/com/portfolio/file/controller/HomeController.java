@@ -40,7 +40,7 @@ public class HomeController {
         return "home/home";
     }
 
-    @GetMapping("/date")
+    @GetMapping(value = "/date")
     public String racingdate(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
 
         String loginUser = userDetails.getUsername();
@@ -61,8 +61,33 @@ public class HomeController {
 
         model.addAttribute("loginUsername", loginUser);
 
-        List<RacingModel> dateinfos = racingRepository.findAllOrderByAllDate(loginUser, stertdate, enddate);
-        model.addAttribute("dateinfos", dateinfos);
+        List<RacingModel> infos = racingRepository.findAllOrderByAllDate(loginUser, stertdate, enddate);
+        model.addAttribute("infos", infos);
     return "home/home";
 }
+
+//    @GetMapping("/year")
+//    public String racingyear(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+//
+//        String loginUser = userDetails.getUsername();
+//
+//        Calendar stertdate1 = Calendar.getInstance();
+//        stertdate1.set(Calendar.YEAR,    2021);
+//        stertdate1.set(Calendar.MONTH,  1 - 1);
+//        stertdate1.set(Calendar.DATE,   1 - 1);
+//        Date stertdate = new Date();
+//        stertdate = stertdate1.getTime();
+//
+//        Calendar enddate1 = Calendar.getInstance();
+//        enddate1.set(Calendar.YEAR,     2021);
+//        enddate1.set(Calendar.MONTH,  12 - 1);
+//        enddate1.set(Calendar.DATE,    31 - 1);
+//        Date enddate = new Date();
+//        enddate = enddate1.getTime();
+//
+//        model.addAttribute("loginUsername", loginUser);
+//
+//        List<RacingModel> suminfos = racingRepository.findAllOrderByAllsum(loginUser, stertdate, enddate);
+//        model.addAttribute("suminfos", suminfos);
+//    return "home/home";
 }

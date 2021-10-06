@@ -12,19 +12,18 @@
      <table class="table table-striped">
       <thead>
         <tr>
-          <th>ID</th>
+          <!-- <th>ID</th> -->
           <th>日付</th>
           <th>レース名</th>
           <th>レース場</th>
           <th>支出額</th>
           <th>収入額</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr th:each="racingmodel : ${infos}" th:object="${racingmodel}" class="align-middle">
-          <td th:text="*{id}"></td>
-          <td th:text="*{date}"></td>
+          <!-- <td th:text="*{id}"></td> -->
+          <td th:text="*{#dates.format(date, 'yyyy/MM/dd')}"></td>
           <td th:text="*{racing_name}"></td>
           <td th:text="*{racing_place}"></td>
           <td th:text="*{expenditure}"></td>
@@ -33,7 +32,7 @@
       </tbody>
     </table>
 
-    <table class="table table-striped dateinfos">
+   <!--  <table class="table table-striped dateinfos">
       <thead>
         <tr>
           <th>ID</th>
@@ -56,6 +55,23 @@
         </tr>
       </tbody>
     </table>
+
+     <table class="table table-striped dateinfos">
+      <thead>
+        <tr>
+          <th>支出額</th>
+          <th>収入額</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="racingmodel : ${suminfos}" th:object="${racingmodel}" class="align-middle">
+          <td th:text="*{expenditure}"></td>
+          <td th:text="*{income_amount}"></td>
+        </tr>
+      </tbody>
+    </table> -->
+
     <!-- 新規登録 -->
     <div class="btn-a">
     <a th:href="@{'/new/race'}">レース情報登録</a>

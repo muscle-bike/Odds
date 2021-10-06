@@ -26,4 +26,7 @@ public interface RacingRepository extends JpaRepository<RacingModel, Integer>{
 //  特定の月内で登録したレース情報取得
     @Query("SELECT r FROM RacingModel r WHERE r.username = :username AND :startdate <= r.date AND :enddate >= r.date ORDER BY r.id, r.date asc, r.racing_name, r.racing_place, r.expenditure, r.income_amount")
     List<RacingModel>findAllOrderByAllDate(@Param("username")String username, @Param("startdate")Date startdate, @Param("enddate")Date enddate);
+
+//    @Query("SELECT r FROM RacingModel r WHERE r.username = :username AND :startdate <= r.date AND :enddate >= r.date ORDER BY r.date asc, SUM(r.expenditure), SUM(r.income_amount)")
+//    List<RacingModel>findAllOrderByAllsum(@Param("username")String username, @Param("startdate")Date startdate, @Param("enddate")Date enddate);
 }
