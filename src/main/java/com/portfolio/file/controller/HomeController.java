@@ -1,5 +1,7 @@
 package com.portfolio.file.controller;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import com.portfolio.file.service.RacingService;
 public class HomeController {
     @Autowired
     private RacingService racingService;
+    @Autowired
     private RacingRepository racingRepository;
 
  // Getメソッド
@@ -29,11 +32,37 @@ public class HomeController {
             // ログインユーザーの詳細情報がNULL以外の場合
             String loginUser = userDetails.getUsername();
 //            List<RacingModel> races = racingService.findByUsername(loginUser);
-//            model.addAttribute("loginUsername", loginUser);
+            model.addAttribute("loginUsername", loginUser);
             List<RacingModel> infos = racingRepository.findAllOrderByAllInfos(loginUser);
             model.addAttribute("infos", infos);
         }
         //  login.htmlに遷移
         return "home/home";
     }
+
+    @GetMapping("/date")
+    public String racingdate(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+
+        String loginUser = userDetails.getUsername();
+
+        Calendar stertdate1 = Calendar.getInstance();
+        stertdate1.set(Calendar.YEAR, 2021);
+        stertdate1.set(Calendar.MONTH,  10 - 1);
+        stertdate1.set(Calendar.DATE,    1 - 1);
+        Date stertdate = new Date();
+        stertdate = stertdate1.getTime();
+
+        Calendar enddate1 = Calendar.getInstance();
+        enddate1.set(Calendar.YEAR, 2021);
+        enddate1.set(Calendar.MONTH,  11 - 1);
+        enddate1.set(Calendar.DATE,    1 - 1);
+        Date enddate = new Date();
+        enddate = enddate1.getTime();
+
+        model.addAttribute("loginUsername", loginUser);
+
+        List<RacingModel> dateinfos = racingRepository.findAllOrderByAllDate(loginUser, stertdate, enddate);
+        model.addAttribute("dateinfos", dateinfos);
+    return "home/home";
+}
 }

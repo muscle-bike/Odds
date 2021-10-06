@@ -3,6 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:insert="/fragments/head :: head"></th:block>
+  <link rel="stylesheet" th:href="@{/css/home/home.css}">
     <title>home</title>
 </head>
 <body class="text-center">
@@ -12,6 +13,7 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th>日付</th>
           <th>レース名</th>
           <th>レース場</th>
           <th>支出額</th>
@@ -22,6 +24,31 @@
       <tbody>
         <tr th:each="racingmodel : ${infos}" th:object="${racingmodel}" class="align-middle">
           <td th:text="*{id}"></td>
+          <td th:text="*{date}"></td>
+          <td th:text="*{racing_name}"></td>
+          <td th:text="*{racing_place}"></td>
+          <td th:text="*{expenditure}"></td>
+          <td th:text="*{income_amount}"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-striped dateinfos">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>日付</th>
+          <th>レース名</th>
+          <th>レース場</th>
+          <th>支出額</th>
+          <th>収入額</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="racingmodel : ${dateinfos}" th:object="${racingmodel}" class="align-middle">
+          <td th:text="*{id}"></td>
+          <td th:text="*{date}"></td>
           <td th:text="*{racing_name}"></td>
           <td th:text="*{racing_place}"></td>
           <td th:text="*{expenditure}"></td>
