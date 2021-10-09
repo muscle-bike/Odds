@@ -54,11 +54,12 @@
           <td th:text="*{income_amount}"></td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
 
-     <table class="table table-striped dateinfos">
+      <table class="table table-striped dateinfos">
       <thead>
         <tr>
+          <th>回数</th>
           <th>支出額</th>
           <th>収入額</th>
           <th></th>
@@ -66,11 +67,18 @@
       </thead>
       <tbody>
         <tr th:each="racingmodel : ${suminfos}" th:object="${racingmodel}" class="align-middle">
+          <td th:text="*{id}"></td>
           <td th:text="*{expenditure}"></td>
           <td th:text="*{income_amount}"></td>
         </tr>
       </tbody>
-    </table> -->
+    </table>
+
+    <form th:action="@{/date}" th:object="${infos}" th:method="post">
+     <label for="request-month">範囲</label>
+     <input type="month" name="request_month" id="request-month" th:field="*{year,month}">
+     <button type="submit">決定</button>
+    </form>
 
     <!-- 新規登録 -->
     <div class="btn-a">

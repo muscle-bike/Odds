@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.portfolio.file.model.RacingModel;
 import com.portfolio.file.model.impl.UserDetailsImpl;
 import com.portfolio.file.repository.RacingRepository;
+import com.portfolio.file.repository.RacingRepository.RateAllsum;
 import com.portfolio.file.service.RacingService;
 @Controller
 public class HomeController {
@@ -20,6 +21,10 @@ public class HomeController {
     private RacingService racingService;
     @Autowired
     private RacingRepository racingRepository;
+
+//    private int year;
+//    private int month;
+
 
  // Getメソッド
     @GetMapping("/home")
@@ -42,20 +47,23 @@ public class HomeController {
 
     @GetMapping(value = "/date")
     public String racingdate(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+//        this.year = year;
+//        this.year = year;
 
         String loginUser = userDetails.getUsername();
 
+
         Calendar stertdate1 = Calendar.getInstance();
         stertdate1.set(Calendar.YEAR, 2021);
-        stertdate1.set(Calendar.MONTH,  10 - 1);
+        stertdate1.set(Calendar.MONTH, 10 - 1);
         stertdate1.set(Calendar.DATE,    1 - 1);
         Date stertdate = new Date();
         stertdate = stertdate1.getTime();
 
         Calendar enddate1 = Calendar.getInstance();
         enddate1.set(Calendar.YEAR, 2021);
-        enddate1.set(Calendar.MONTH,  11 - 1);
-        enddate1.set(Calendar.DATE,    1 - 1);
+        enddate1.set(Calendar.MONTH,10);
+        enddate1.set(Calendar.DATE,    30);
         Date enddate = new Date();
         enddate = enddate1.getTime();
 
@@ -66,28 +74,29 @@ public class HomeController {
     return "home/home";
 }
 
-//    @GetMapping("/year")
-//    public String racingyear(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-//
-//        String loginUser = userDetails.getUsername();
-//
-//        Calendar stertdate1 = Calendar.getInstance();
-//        stertdate1.set(Calendar.YEAR,    2021);
-//        stertdate1.set(Calendar.MONTH,  1 - 1);
-//        stertdate1.set(Calendar.DATE,   1 - 1);
-//        Date stertdate = new Date();
-//        stertdate = stertdate1.getTime();
-//
-//        Calendar enddate1 = Calendar.getInstance();
-//        enddate1.set(Calendar.YEAR,     2021);
-//        enddate1.set(Calendar.MONTH,  12 - 1);
-//        enddate1.set(Calendar.DATE,    31 - 1);
-//        Date enddate = new Date();
-//        enddate = enddate1.getTime();
-//
-//        model.addAttribute("loginUsername", loginUser);
-//
-//        List<RacingModel> suminfos = racingRepository.findAllOrderByAllsum(loginUser, stertdate, enddate);
-//        model.addAttribute("suminfos", suminfos);
-//    return "home/home";
+    @GetMapping("/year")
+    public String racingyear(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+
+        String loginUser = userDetails.getUsername();
+
+        Calendar stertdate1 = Calendar.getInstance();
+        stertdate1.set(Calendar.YEAR,    2021);
+        stertdate1.set(Calendar.MONTH,  10 - 1);
+        stertdate1.set(Calendar.DATE,   1 - 1);
+        Date stertdate = new Date();
+        stertdate = stertdate1.getTime();
+
+        Calendar enddate1 = Calendar.getInstance();
+        enddate1.set(Calendar.YEAR,     2021);
+        enddate1.set(Calendar.MONTH,  12 - 1);
+        enddate1.set(Calendar.DATE,    31 - 1);
+        Date enddate = new Date();
+        enddate = enddate1.getTime();
+
+        model.addAttribute("loginUsername", loginUser);
+
+        List<RateAllsum> suminfos = racingRepository.findAllOrderByAllsum(loginUser, stertdate, enddate);
+        model.addAttribute("suminfos", suminfos);
+    return "home/home";
+}
 }
