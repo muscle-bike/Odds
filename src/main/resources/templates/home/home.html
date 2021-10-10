@@ -74,9 +74,9 @@
       </tbody>
     </table>
 
-    <form th:action="@{/date}" th:object="${infos}" th:method="post">
+    <form th:action="@{/date}" th:object="${infos}" th:method="get">
      <label for="request-month">範囲</label>
-     <input type="month" name="request_month" id="request-month" th:field="*{year,month}">
+     <input type="month" name="requestMonth" id="requestMonth">
      <button type="submit">決定</button>
     </form>
 
