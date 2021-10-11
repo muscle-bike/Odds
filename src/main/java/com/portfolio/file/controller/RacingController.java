@@ -69,7 +69,7 @@ public class RacingController {
      }
      // ユーザー情報の更新
      racingService.update(racingUpdateRequest);
-     return String.format("redirect:/racing_infos/%d", racingUpdateRequest.getId());
+     return String.format("redirect:/home", racingUpdateRequest.getId());
    }
 
    //レース情報削除（idを削除する）

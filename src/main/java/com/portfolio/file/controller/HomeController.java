@@ -16,14 +16,14 @@ import com.portfolio.file.model.RacingModel;
 import com.portfolio.file.model.impl.UserDetailsImpl;
 import com.portfolio.file.repository.RacingRepository;
 import com.portfolio.file.repository.RacingRepository.RateAllsum;
-import com.portfolio.file.service.RacingService;
 @Controller
 public class HomeController {
-    @Autowired
-    private RacingService racingService;
+//    @Autowired
+//    private RacingService racingService;
     @Autowired
     private RacingRepository racingRepository;
-
+//    @Autowired
+//    private RateAllsum rateAllsum;
 
  // Getメソッド
     @GetMapping("/home")
@@ -76,27 +76,34 @@ public class HomeController {
 }
 
     @GetMapping("/year")
-    public String racingyear(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public String racingyear(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails,
+            @RequestParam(defaultValue = "NOT PARAM") String requestMonth) {
+        String[] requestMonths = requestMonth.split("-");
+        int[] yearMonth = Stream.of(requestMonths).mapToInt(Integer::parseInt).toArray();
 
         String loginUser = userDetails.getUsername();
 
         Calendar stertdate1 = Calendar.getInstance();
-        stertdate1.set(Calendar.YEAR,    2021);
-        stertdate1.set(Calendar.MONTH,  10 - 1);
+        stertdate1.set(Calendar.YEAR,   yearMonth[0]);
+        stertdate1.set(Calendar.MONTH,  1 - 1);
         stertdate1.set(Calendar.DATE,   1 - 1);
         Date stertdate = new Date();
         stertdate = stertdate1.getTime();
 
         Calendar enddate1 = Calendar.getInstance();
-        enddate1.set(Calendar.YEAR,     2021);
-        enddate1.set(Calendar.MONTH,  12 - 1);
-        enddate1.set(Calendar.DATE,    31 - 1);
+        enddate1.set(Calendar.YEAR,    yearMonth[0]);
+        enddate1.set(Calendar.MONTH,   12 - 1);
+        int result = enddate1.getActualMaximum(Calendar.DAY_OF_MONTH);
+        enddate1.set(Calendar.DATE, result);
         Date enddate = new Date();
         enddate = enddate1.getTime();
 
         model.addAttribute("loginUsername", loginUser);
-
         List<RateAllsum> suminfos = racingRepository.findAllOrderByAllsum(loginUser, stertdate, enddate);
+        RateAllsum rateAllsum = suminfos.get(0);
+        rateAllsum.getCnt();
+        rateAllsum.getExsum();
+        rateAllsum.getIncomesum();
         model.addAttribute("suminfos", suminfos);
     return "home/home";
 }

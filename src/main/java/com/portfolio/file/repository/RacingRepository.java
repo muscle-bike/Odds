@@ -27,17 +27,15 @@ public interface RacingRepository extends JpaRepository<RacingModel, Integer>{
     @Query("SELECT r FROM RacingModel r WHERE r.username = :username AND :startdate <= r.date AND :enddate >= r.date ORDER BY r.date asc, r.racing_name, r.racing_place, r.expenditure, r.income_amount")
     List<RacingModel>findAllOrderByAllDate(@Param("username")String username, @Param("startdate")Date startdate, @Param("enddate")Date enddate);
 
-//    @Query("SELECT COUNT(r.id) FROM RacingModel r WHERE r.username = :username AND :startdate <= r.date AND :enddate >= r.date GROUP BY r")
-//    List<RacingModel>findAllOrderByAllsum(@Param("username")String username, @Param("startdate")Date startdate, @Param("enddate")Date enddate);
-
-    @Query("select r.id as id, count(*) as cnt from RacingModel r group by r.id")
+    @Query("select  count(*) as cnt, sum(expenditure) as exsum, sum(income_amount) as incomesum from RacingModel r group by r.id")
     List<RateAllsum> list();
 
-    @Query(value = "SELECT r.id as id, COUNT(*) as cnt FROM RacingModel r WHERE r.username = :username AND :startdate <= r.date AND :enddate >= r.date GROUP BY r.id")
+    @Query(value = "SELECT COUNT(*) as cnt,sum(expenditure) as exsum, sum(income_amount) as incomesum FROM RacingModel r WHERE r.username = :username AND :startdate <= r.date AND :enddate >= r.date")
     List<RateAllsum>findAllOrderByAllsum(@Param("username")String username, @Param("startdate")Date startdate, @Param("enddate")Date enddate);
 
     public static interface RateAllsum{
-        public Long getId();
-        public int getCnt();
-      }
+      public int getCnt();
+      public int getExsum();
+      public int getIncomesum();
+    }
 }

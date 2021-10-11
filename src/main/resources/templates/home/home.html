@@ -8,7 +8,9 @@
 </head>
 <body class="text-center">
     <h1>Home</h1>
-
+    <div class="tab-wrap">
+    <input id="TAB02-01" type="radio" name="TAB02" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB02-01">日別</label>
+    <div class="tab-content">
      <table class="table table-striped">
       <thead>
         <tr>
@@ -18,67 +20,74 @@
           <th>レース場</th>
           <th>支出額</th>
           <th>収入額</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr th:each="racingmodel : ${infos}" th:object="${racingmodel}" class="align-middle">
-          <!-- <td th:text="*{id}"></td> -->
           <td th:text="*{#dates.format(date, 'yyyy/MM/dd')}"></td>
           <td th:text="*{racing_name}"></td>
           <td th:text="*{racing_place}"></td>
           <td th:text="*{expenditure}"></td>
           <td th:text="*{income_amount}"></td>
+          <td><a th:href="@{/edit/edit/{id}(id=*{id})}" class="btn btn-secondary">編集</a></td>
         </tr>
       </tbody>
     </table>
+<form th:action="@{/date}" th:object="${infos}" th:method="get">
+     <label for="request-month">範囲</label>
+     <input type="month" name="requestMonth" id="requestMonth">
+     <button type="submit">決定</button>
+    </form>
+    </div>
 
-   <!--  <table class="table table-striped dateinfos">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>日付</th>
-          <th>レース名</th>
-          <th>レース場</th>
-          <th>支出額</th>
-          <th>収入額</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr th:each="racingmodel : ${dateinfos}" th:object="${racingmodel}" class="align-middle">
-          <td th:text="*{id}"></td>
-          <td th:text="*{date}"></td>
-          <td th:text="*{racing_name}"></td>
-          <td th:text="*{racing_place}"></td>
-          <td th:text="*{expenditure}"></td>
-          <td th:text="*{income_amount}"></td>
-        </tr>
-      </tbody>
-    </table> -->
-
-      <table class="table table-striped dateinfos">
+    <input id="TAB02-02" type="radio" name="TAB02" class="tab-switch"/><label class="tab-label" for="TAB02-02">年間</label>
+    <div class="tab-content">
+       <!-- 年間の合計を表示 -->
+    <table class="table table-striped dateinfos">
       <thead>
         <tr>
           <th>回数</th>
           <th>支出額</th>
           <th>収入額</th>
-          <th></th>
         </tr>
       </thead>
+
       <tbody>
         <tr th:each="racingmodel : ${suminfos}" th:object="${racingmodel}" class="align-middle">
-          <td th:text="*{id}"></td>
-          <td th:text="*{expenditure}"></td>
-          <td th:text="*{income_amount}"></td>
+          <td th:text="*{cnt}"></td>
+          <td th:text="*{exsum}"></td>
+          <td th:text="*{incomesum}"></td>
         </tr>
       </tbody>
     </table>
 
-    <form th:action="@{/date}" th:object="${infos}" th:method="get">
+    <form th:action="@{/year}" th:object="${infos}" th:method="get">
+     <label for="request-month">西暦</label>
+     <input type="number" name="requestMonth" id="requestMonth" placeholder="例：2021">
+     <button type="submit">決定</button>
+    </form>
+
+    </div>
+    <input id="TAB02-03" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-03">ボタン 3</label>
+    <div class="tab-content">
+        月間
+    </div>
+    <input id="TAB02-04" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-04">ボタン 4</label>
+    <div class="tab-content">
+        累計
+    </div>
+</div>
+
+
+
+
+
+    <!-- <form th:action="@{/date}" th:object="${infos}" th:method="get">
      <label for="request-month">範囲</label>
      <input type="month" name="requestMonth" id="requestMonth">
      <button type="submit">決定</button>
-    </form>
+    </form> -->
 
     <!-- 新規登録 -->
     <div class="btn-a">
