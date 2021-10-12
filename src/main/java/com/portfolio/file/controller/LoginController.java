@@ -13,10 +13,8 @@ public class LoginController {
      */
     private final String REDIRECT_HOME_URL = "redirect:/home";
 
-    // Getメソッド
     @GetMapping("/login")
     public String getLogin(Model model) {
-        //  login.htmlに遷移
         return "login/login";
     }
 
@@ -27,7 +25,6 @@ public class LoginController {
      */
     @PostMapping("/success")
     public String loginSuccess() {
-        // HOME画面に遷移する
         return REDIRECT_HOME_URL;
     }
 }

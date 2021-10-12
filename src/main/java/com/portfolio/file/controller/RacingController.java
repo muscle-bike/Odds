@@ -19,32 +19,32 @@ import com.portfolio.file.service.RacingService;
 
 @Controller
 public class RacingController {
-    //レース情報 Service
     @Autowired
     private RacingService racingService;
-    //Getメソッド
+
     //レース情報新規登録画面表示
-   @GetMapping(value ="/new/race")
-   public String displayRace(Model model) {
-       model.addAttribute("racingRequest", new RacingRequest());
-       //レース情報登録画面に遷移
-       return "new/race";
+    @GetMapping(value ="/new/race")
+    public String displayRace(Model model) {
+        model.addAttribute("racingRequest", new RacingRequest());
+        return "new/race";
    }
 
    //レース情報編集画面を表示
    @GetMapping(value ="/edit/edit/{id}")
-       public String displayEdit(@PathVariable Integer id, Model model) {
-           RacingModel racing_infos = racingService.findById(id);
-           RacingUpdateRequest racingUpdateRequest = new RacingUpdateRequest();
-           racingUpdateRequest.setId(racing_infos.getId());
-           racingUpdateRequest.setDate(racing_infos.getDate());
-           racingUpdateRequest.setRacing_name(racing_infos.getRacing_name());
-           racingUpdateRequest.setRacing_place(racing_infos.getRacing_place());
-           racingUpdateRequest.setExpenditure(racing_infos.getExpenditure());
-           racingUpdateRequest.setIncome_amount(racing_infos.getIncome_amount());
-           model.addAttribute("RacingUpdateRequest", racingUpdateRequest);
+   public String displayEdit(@PathVariable Integer id, Model model) {
+       RacingModel racing_infos = racingService.findById(id);
+       RacingUpdateRequest racingUpdateRequest = new RacingUpdateRequest();
+       racingUpdateRequest.setId(racing_infos.getId());
+       racingUpdateRequest.setDate(racing_infos.getDate());
+       racingUpdateRequest.setRacing_name(racing_infos.getRacing_name());
+       racingUpdateRequest.setRacing_place(racing_infos.getRacing_place());
+       racingUpdateRequest.setExpenditure(racing_infos.getExpenditure());
+       racingUpdateRequest.setIncome_amount(racing_infos.getIncome_amount());
+       model.addAttribute("RacingUpdateRequest", racingUpdateRequest);
        return "edit/edit";
    }
+
+
    RacingModel racingmodel = new RacingModel();
 
    //レース情報クリエイト
@@ -54,29 +54,27 @@ public class RacingController {
        if (result.hasErrors()) {
            return "new/race";
          }
-
        String loginUser = userDetails.getUsername();
-       //ユーザー情報の登録
-         racingService.create(racingRequest, loginUser);
-         return "redirect:/home";
+       racingService.create(racingRequest, loginUser);
+       return "redirect:/home";
    }
 
    //レース情報の更新
    @RequestMapping(value = "/racing_infos/update", method = RequestMethod.POST)
    public String update(@Validated @ModelAttribute RacingUpdateRequest racingUpdateRequest, BindingResult result, Model model) {
-     if (result.hasErrors()) {
+       if (result.hasErrors()) {
        return "edit/edit";
      }
-     // ユーザー情報の更新
-     racingService.update(racingUpdateRequest);
-     return String.format("redirect:/home", racingUpdateRequest.getId());
+       // ユーザー情報の更新
+       racingService.update(racingUpdateRequest);
+       return String.format("redirect:/home", racingUpdateRequest.getId());
    }
 
    //レース情報削除（idを削除する）
    @GetMapping("/racing_infos/delete/{id}")
    public String delete(@PathVariable Integer id, Model model) {
-     // ユーザー情報の削除
-     racingService.delete(id);
-     return "redirect:/home";
+       // ユーザー情報の削除
+       racingService.delete(id);
+       return "redirect:/home";
    }
  }
