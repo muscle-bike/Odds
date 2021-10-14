@@ -3,13 +3,15 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:insert="/fragments/head :: head"></th:block>
-  <link rel="stylesheet" th:href="@{/css/home/home.css}">
+    <link rel="stylesheet" th:href="@{/css/home/home.css}">
     <title>home</title>
 </head>
 <body class="text-center">
     <h1>Home</h1>
+
     <div class="tab-wrap">
-    <input id="TAB02-01" type="radio" name="TAB02" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB02-01">日別</label>
+    <input type="radio" id="TAB01" name="TAB" class="tab-switch" value="TAB01" th:field="*{TAB01}" />
+    <label class="tab-label" for="TAB01">日別</label>
     <div class="tab-content">
      <table class="table table-striped">
       <thead>
@@ -40,9 +42,10 @@
     </form>
     </div>
 
-    <input id="TAB02-02" type="radio" name="TAB02" class="tab-switch" checked="checked"/> <label class="tab-label" for="TAB02-02">月別</label>
+    <input  type="radio" id="TAB02" name="TAB" class="tab-switch" value="TAB02"  th:field="*{TAB01}"/>
+    <label class="tab-label" for="TAB02">月間</label>
     <div class="tab-content">
-       <!-- 年間の合計を表示 -->
+
     <table class="table table-striped dateinfos">
       <thead>
         <tr>
@@ -69,7 +72,8 @@
 
     </div>
 
-    <input id="TAB02-03" type="radio" name="TAB02" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB02-03">年別</label>
+    <input type="radio" id="TAB03" name="TAB" class="tab-switch" value="TAB03" th:field="*{TAB01}"/>
+    <label class="tab-label" for="TAB03" >年別</label>
     <div class="tab-content">
       <table class="table table-striped dateinfos">
       <thead>
@@ -96,10 +100,6 @@
     </form>
    </div>
 
-    <input id="TAB02-04" type="radio" name="TAB02" class="tab-switch" checked="checked"/><label class="tab-label" for="TAB02-04">ボタン 4</label>
-    <div class="tab-content">
-        累計
-    </div>
 </div>
 
     <!-- 新規登録 -->

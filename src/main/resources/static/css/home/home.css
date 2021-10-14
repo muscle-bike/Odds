@@ -102,3 +102,29 @@ table tr:last-child td:last-child {
 .tab-switch {
   display: none;
 }
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color          : #fff;
+    text-decoration: none;
+}
+
+.btn-a {
+    width         : 20%;
+    display       : inline-block;
+    border-radius : 5%;          /* 角丸       */
+    font-size     : 13pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 12px 12px;   /* 余白       */
+    background    : #fdca02;     /* 背景色     */
+    color         : #fff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+}
+.btn-a:hover {
+    background    : #f98b14c2;
+}

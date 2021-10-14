@@ -10,8 +10,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.portfolio.file.form.DateRequest;
 import com.portfolio.file.model.RacingModel;
 import com.portfolio.file.model.impl.UserDetailsImpl;
 import com.portfolio.file.repository.RacingRepository;
@@ -22,7 +24,8 @@ public class HomeController {
     private RacingRepository racingRepository;
 
     @GetMapping("/home")
-    public String getHome(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public String getHome(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails,
+            @ModelAttribute DateRequest dateRequest) {
         // ログインユーザーの詳細情報を判定
         if (userDetails == null) {
             // ログインユーザーの詳細情報がNULLの場合
@@ -34,9 +37,11 @@ public class HomeController {
             List<RacingModel> infos = racingRepository.findAllOrderByAllInfos(loginUser);
             model.addAttribute("infos", infos);
         }
+        dateRequest.setTAB01("TAB03");
         return "home/home";
     }
 
+    // 日別でのレース情報&月毎とのレース情報取得
     @GetMapping(value = "/date")
     public String racingdate(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails,
             @RequestParam(defaultValue = "NOT PARAM") String requestMonth) {
@@ -69,6 +74,7 @@ public class HomeController {
     return "home/home";
 }
 
+    // 月間の合計
     @GetMapping("/month")
     public String racingmonth(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails,
             @RequestParam(defaultValue = "NOT PARAM") String requestMonth) {
@@ -104,6 +110,7 @@ public class HomeController {
     return "home/home";
 }
 
+    // 年間の合計
     @GetMapping("/year")
     public String racingyear(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails,
             @RequestParam(defaultValue = "NOT PARAM") String requestMonth) {
@@ -112,7 +119,7 @@ public class HomeController {
 
         String loginUser = userDetails.getUsername();
 
-        // 年始
+        //年始
         Calendar stertdate1 = Calendar.getInstance();
         stertdate1.set(Calendar.YEAR,   yearMonth[0]);
         stertdate1.set(Calendar.MONTH,  1 - 1);
@@ -138,3 +145,4 @@ public class HomeController {
     return "home/home";
 }
 }
+
