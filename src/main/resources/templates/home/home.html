@@ -6,13 +6,25 @@
     <link rel="stylesheet" th:href="@{/css/home/home.css}">
     <title>home</title>
 </head>
-<body class="text-center">
+<body class="text-center" th:object="${dateRequest}">
     <h1>Home</h1>
+
+     <!-- 新規登録 -->
+    <div class="btn-a">
+    <a th:href="@{'/new/race'}">レース情報登録</a>
+    </div>
 
     <div class="tab-wrap">
     <input type="radio" id="TAB01" name="TAB" class="tab-switch" value="TAB01" th:field="*{TAB01}" />
     <label class="tab-label" for="TAB01">日別</label>
+
     <div class="tab-content">
+    <form th:action="@{/date}" th:object="${infos}" th:method="get">
+     <label for="request-month">範囲</label>
+     <input type="month" name="requestMonth" id="requestMonth">
+     <button type="submit">決定</button>
+
+    </form>
      <table class="table table-striped">
       <thead>
         <tr>
@@ -35,16 +47,18 @@
         </tr>
       </tbody>
     </table>
-<form th:action="@{/date}" th:object="${infos}" th:method="get">
-     <label for="request-month">範囲</label>
-     <input type="month" name="requestMonth" id="requestMonth">
-     <button type="submit">決定</button>
-    </form>
+
     </div>
 
     <input  type="radio" id="TAB02" name="TAB" class="tab-switch" value="TAB02"  th:field="*{TAB01}"/>
     <label class="tab-label" for="TAB02">月間</label>
+
     <div class="tab-content">
+    <form th:action="@{/month}" th:object="${infos}" th:method="get">
+     <label for="request-month">月選択</label>
+     <input type="month" name="requestMonth" id="requestMonth" >
+     <button type="submit">決定</button>
+    </form>
 
     <table class="table table-striped dateinfos">
       <thead>
@@ -64,17 +78,19 @@
       </tbody>
     </table>
 
-    <form th:action="@{/month}" th:object="${infos}" th:method="get">
-     <label for="request-month">月選択</label>
-     <input type="month" name="requestMonth" id="requestMonth">
-     <button type="submit">決定</button>
-    </form>
 
     </div>
 
     <input type="radio" id="TAB03" name="TAB" class="tab-switch" value="TAB03" th:field="*{TAB01}"/>
     <label class="tab-label" for="TAB03" >年別</label>
     <div class="tab-content">
+
+    <form th:action="@{/year}" th:object="${infos}" th:method="get">
+     <label for="request-month">西暦</label>
+     <input type="number" name="requestMonth" id="requestMonth" placeholder="例：2021">
+     <button type="submit">決定</button>
+    </form>
+
       <table class="table table-striped dateinfos">
       <thead>
         <tr>
@@ -92,12 +108,6 @@
         </tr>
       </tbody>
     </table>
-
-    <form th:action="@{/year}" th:object="${infos}" th:method="get">
-     <label for="request-month">西暦</label>
-     <input type="number" name="requestMonth" id="requestMonth" placeholder="例：2021">
-     <button type="submit">決定</button>
-    </form>
    </div>
 
 </div>

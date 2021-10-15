@@ -37,13 +37,14 @@ public class HomeController {
             List<RacingModel> infos = racingRepository.findAllOrderByAllInfos(loginUser);
             model.addAttribute("infos", infos);
         }
-        dateRequest.setTAB01("TAB03");
+        dateRequest.setTAB01("TAB01");
         return "home/home";
     }
 
     // 日別でのレース情報&月毎とのレース情報取得
     @GetMapping(value = "/date")
     public String racingdate(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails,
+            @ModelAttribute DateRequest dateRequest,
             @RequestParam(defaultValue = "NOT PARAM") String requestMonth) {
         String[] requestMonths = requestMonth.split("-");
         int[] yearMonth = Stream.of(requestMonths).mapToInt(Integer::parseInt).toArray();
@@ -62,8 +63,8 @@ public class HomeController {
         Calendar enddate1 = Calendar.getInstance();
         enddate1.set(Calendar.YEAR, yearMonth[0]);
         enddate1.set(Calendar.MONTH,yearMonth[1] - 1);
-        int result = enddate1.getActualMaximum(Calendar.DAY_OF_MONTH);
-        enddate1.set(Calendar.DATE, result);
+        int endOfManth = enddate1.getActualMaximum(Calendar.DAY_OF_MONTH);
+        enddate1.set(Calendar.DATE, endOfManth);
         Date enddate = new Date();
         enddate = enddate1.getTime();
 
@@ -71,12 +72,14 @@ public class HomeController {
 
         List<RacingModel> infos = racingRepository.findAllOrderByAllDate(loginUser, stertdate, enddate);
         model.addAttribute("infos", infos);
+        dateRequest.setTAB01("TAB01");
     return "home/home";
 }
 
     // 月間の合計
     @GetMapping("/month")
     public String racingmonth(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails,
+            @ModelAttribute DateRequest dateRequest,
             @RequestParam(defaultValue = "NOT PARAM") String requestMonth) {
         String[] requestMonths = requestMonth.split("-");
         int[] yearMonth = Stream.of(requestMonths).mapToInt(Integer::parseInt).toArray();
@@ -95,8 +98,8 @@ public class HomeController {
         Calendar enddate1 = Calendar.getInstance();
         enddate1.set(Calendar.YEAR, yearMonth[0]);
         enddate1.set(Calendar.MONTH,yearMonth[1] - 1);
-        int result = enddate1.getActualMaximum(Calendar.DAY_OF_MONTH);
-        enddate1.set(Calendar.DATE, result);
+        int endOfManth = enddate1.getActualMaximum(Calendar.DAY_OF_MONTH);
+        enddate1.set(Calendar.DATE, endOfManth);
         Date enddate = new Date();
         enddate = enddate1.getTime();
 
@@ -107,12 +110,14 @@ public class HomeController {
         rateAllsum.getExsum();
         rateAllsum.getIncomesum();
         model.addAttribute("monthinfos", monthinfos);
+        dateRequest.setTAB01("TAB02");
     return "home/home";
 }
 
     // 年間の合計
     @GetMapping("/year")
     public String racingyear(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails,
+            @ModelAttribute DateRequest dateRequest,
             @RequestParam(defaultValue = "NOT PARAM") String requestMonth) {
         String[] requestMonths = requestMonth.split("-");
         int[] yearMonth = Stream.of(requestMonths).mapToInt(Integer::parseInt).toArray();
@@ -130,8 +135,8 @@ public class HomeController {
         Calendar enddate1 = Calendar.getInstance();
         enddate1.set(Calendar.YEAR,    yearMonth[0]);
         enddate1.set(Calendar.MONTH,   12 - 1);
-        int result = enddate1.getActualMaximum(Calendar.DAY_OF_MONTH);
-        enddate1.set(Calendar.DATE, result);
+        int endOfManth = enddate1.getActualMaximum(Calendar.DAY_OF_MONTH);
+        enddate1.set(Calendar.DATE, endOfManth);
         Date enddate = new Date();
         enddate = enddate1.getTime();
 
@@ -142,6 +147,7 @@ public class HomeController {
         rateAllsum.getExsum();
         rateAllsum.getIncomesum();
         model.addAttribute("yearinfos", yearinfos);
+        dateRequest.setTAB01("TAB03");
     return "home/home";
 }
 }
