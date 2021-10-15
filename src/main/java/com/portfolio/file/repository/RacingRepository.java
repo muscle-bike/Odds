@@ -21,10 +21,10 @@ public interface RacingRepository extends JpaRepository<RacingModel, Integer>{
     @Query("SELECT r FROM RacingModel r WHERE r.username = :username")
     List<RacingModel> findByUsername(@Param("username")String username);
 //  ログインユーザーで登録しているレース情報取得
-    @Query("SELECT r FROM RacingModel r WHERE r.username = :username ORDER BY r.date asc, r.racing_name, r.racing_place, r.expenditure, r.income_amount")
+    @Query("SELECT r FROM RacingModel r WHERE r.username = :username ORDER BY r.date asc, r.id, r.racing_name, r.racing_place, r.expenditure, r.income_amount")
     List<RacingModel> findAllOrderByAllInfos(@Param("username")String username);
 //  特定の月内で登録したレース情報取得
-    @Query("SELECT r FROM RacingModel r WHERE r.username = :username AND :startdate <= r.date AND :enddate >= r.date ORDER BY r.date asc, r.racing_name, r.racing_place, r.expenditure, r.income_amount")
+    @Query("SELECT r FROM RacingModel r WHERE r.username = :username AND :startdate <= r.date AND :enddate >= r.date ORDER BY r.date asc, r.id, r.racing_name, r.racing_place, r.expenditure, r.income_amount")
     List<RacingModel>findAllOrderByAllDate(@Param("username")String username, @Param("startdate")Date startdate, @Param("enddate")Date enddate);
 
     @Query("select  count(*) as cnt, sum(expenditure) as exsum, sum(income_amount) as incomesum from RacingModel r group by r.id")

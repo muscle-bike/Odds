@@ -23,7 +23,7 @@ table th{
   border-top: 1px solid #3c6690;
   border-bottom: 1px solid #3c6690;
   box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
-  width: 25%;
+  width: 18%;
   padding: 10px 0;
 }
 
@@ -33,7 +33,7 @@ table td{
   border-bottom: 1px solid #a8b7c5;
   border-top:none;
   box-shadow: 0px -3px 5px 1px #eee inset;
-  width: 25%;
+  width: 18%;
   padding: 10px 0;
 }
 
@@ -86,7 +86,7 @@ table tr:last-child td:last-child {
   overflow: hidden;
   opacity: 0;
 }
-/* アクティブなタブ */
+
 .tab-switch:checked+.tab-label {
   background: DeepSkyBlue;
 }
@@ -115,15 +115,15 @@ a:hover {
 .btn-a {
     width         : 20%;
     display       : inline-block;
-    border-radius : 5%;          /* 角丸       */
-    font-size     : 13pt;        /* 文字サイズ */
-    text-align    : center;      /* 文字位置   */
-    cursor        : pointer;     /* カーソル   */
-    padding       : 12px 12px;   /* 余白       */
-    background    : #fdca02;     /* 背景色     */
-    color         : #fff;     /* 文字色     */
-    line-height   : 1em;         /* 1行の高さ  */
-    transition    : .3s;         /* なめらか変化 */
+    border-radius : 5%;
+    font-size     : 13pt;
+    text-align    : center;
+    cursor        : pointer;
+    padding       : 12px 12px;
+    background    : #fdca02;
+    color         : #fff;
+    line-height   : 1em;
+    transition    : .3s;
 }
 .btn-a:hover {
     background    : #f98b14c2;
