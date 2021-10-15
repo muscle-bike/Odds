@@ -42,3 +42,7 @@ Spring Bootで開発した金銭管理アプリです。
 ・ git clone https://github.com/muscle-bike/Odds.git
 ・ http://localhost:8080/login　にアクセスしてログイン画面を表示
 
+## License
+
+MIT License
+
