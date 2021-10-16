@@ -19,11 +19,11 @@ Spring Bootで開発した金銭管理アプリです。
 ## DEMO
 ![新規登録](https://user-images.githubusercontent.com/83861906/137480079-74b82beb-7089-430e-bfce-7fc1d7067ce2.gif)
 ## Dependency
-・　Java SE Development Kit 11　
-・　Spring Tool 4.11.0.RELEASE　　　
-・　Apache Maven 4　　　
-・　Spring Boot 2.4.5「Thymeleaf、Spring Data JPA、Spring Security、　Spring validation」　　　
-・　Bootstrap 4.5.3　　　
+・　Java SE Development Kit 11
+・　Spring Tool 4.11.0.RELEASE
+・　Apache Maven 4
+・　Spring Boot 2.4.5「Thymeleaf、Spring Data JPA、Spring Security、　Spring validation」
+・　Bootstrap 4.5.3
 ・　Lombok 1.18.20　
 ## Setup
 1.git　clone
