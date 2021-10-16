@@ -1,92 +1,85 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <th:block th:insert="/fragments/head :: head"></th:block>
-  <link rel="stylesheet" th:href="@{/css/new/race.css}">
-  <title>編集</title>
+<th:block th:insert="/fragments/head :: head"></th:block>
+<link rel="stylesheet" th:href="@{/css/new/race.css}">
+<title>編集</title>
 </head>
 
 <body>
-  <div class="race_home">
-      <h1>編集画面</h1>
+    <div class="race_home">
+        <h1>編集画面</h1>
 
-      <form id="race-form" class="form-race" th:action="@{/racing_infos/update}" th:object="${RacingUpdateRequest}" th:method="post">
-      <input type="hidden" th:field="*{id}" />
-        <!-- 日付 -->
-        <div class="data">
-          <p>日　付</p>
-          <p>:</p>
-          <label for="date">
-          <input type="date" class="form-control" th:field="*{date}"/>
-          <span class="text-danger"
-                th:if="${#fields.hasErrors('date')}"
-                th:errors="*{date}">
-          </span>
-          </label>
-        </div>
+        <form id="race-form" class="form-race"
+            th:action="@{/racing_infos/update}"
+            th:object="${RacingUpdateRequest}" th:method="post">
+            <input type="hidden" th:field="*{id}" />
+            <!-- 日付 -->
+            <div class="data">
+                <p>日 付</p>
+                <p>:</p>
+                <label for="date"> <input type="date" class="form-control"
+                    th:field="*{date}" /> <span class="text-danger"
+                    th:if="${#fields.hasErrors('date')}" th:errors="*{date}"> </span>
+                </label>
+            </div>
 
-        <!-- レース名 -->
-        <div class="data">
-          <p>レース名</p>
-          <p>:</p>
-          <label for="racing_name">
-          <input type="text"  class="form-control" th:field="*{racing_name}"/>
-          <span class="text-danger"
-                th:if="${#fields.hasErrors('racing_name')}"
-                th:errors="*{racing_name}">
-          </span>
-          </label>
-        </div>
+            <!-- レース名 -->
+            <div class="data">
+                <p>レース名</p>
+                <p>:</p>
+                <label for="racing_name"> <input type="text"
+                    class="form-control" th:field="*{racing_name}" /> <span
+                    class="text-danger" th:if="${#fields.hasErrors('racing_name')}"
+                    th:errors="*{racing_name}"> </span>
+                </label>
+            </div>
 
-        <!-- レース場 -->
-        <div class="data">
-          <p>レース場</p>
-          <p>:</p>
-          <label for="racing_place">
-          <input type="text"  class="form-control" th:field="*{racing_place}"/>
-           <span class="text-danger"
-                th:if="${#fields.hasErrors('racing_place')}"
-                th:errors="*{racing_place}">
-          </span>
-          </label>
-        </div>
+            <!-- レース場 -->
+            <div class="data">
+                <p>レース場</p>
+                <p>:</p>
+                <label for="racing_place"> <input type="text"
+                    class="form-control" th:field="*{racing_place}" /> <span
+                    class="text-danger" th:if="${#fields.hasErrors('racing_place')}"
+                    th:errors="*{racing_place}"> </span>
+                </label>
+            </div>
 
-        <!-- 支出額 -->
-        <div class="data">
-          <p>支出額</p>
-          <p>:</p>
-           <label for="expenditure">
-          <input type="number"  class="form-control" th:field="*{expenditure}"/>
-           <span class="text-danger"
-                th:if="${#fields.hasErrors('expenditure')}"
-                th:errors="*{expenditure}">
-          </span>
-          </label>
-        </div>
+            <!-- 支出額 -->
+            <div class="data">
+                <p>支出額</p>
+                <p>:</p>
+                <label for="expenditure"> <input type="number"
+                    class="form-control" th:field="*{expenditure}" /> <span
+                    class="text-danger" th:if="${#fields.hasErrors('expenditure')}"
+                    th:errors="*{expenditure}"> </span>
+                </label>
+            </div>
 
-        <!-- 収入 -->
-        <div class="data">
-          <p>収入額</p>
-          <p>:</p>
-          <label for="income_amount">
-          <input type="number"  class="form-control" th:field="*{income_amount}"/>
-          <span class="text-danger"
-                th:if="${#fields.hasErrors('income_amount')}"
-                th:errors="*{income_amount}">
-          </span>
-          </label>
-        </div>
+            <!-- 収入 -->
+            <div class="data">
+                <p>収入額</p>
+                <p>:</p>
+                <label for="income_amount"> <input type="number"
+                    class="form-control" th:field="*{income_amount}" /> <span
+                    class="text-danger" th:if="${#fields.hasErrors('income_amount')}"
+                    th:errors="*{income_amount}"> </span>
+                </label>
+            </div>
             <div class="select-btn">
-                <input type="submit" value="確定"  class="btn btn-primary w20 mt-3" />
+                <input type="submit" value="確定" class="btn btn-primary w20 mt-3" />
             </div>
         </form>
 
-         <form th:action="@{/racing_infos/delete/{id}(id=*{id})}" th:method="get">
-         <div class="select-btn">
-            <input type="submit" value="削除" class="btn delete btn-primary w20 mt-3" />
-         </div>
-         </form>　
- </div>
+        <form th:action="@{/racing_infos/delete/{id}(id=*{id})}"
+            th:method="get">
+            <div class="select-btn">
+                <input type="submit" value="削除"
+                    class="btn delete btn-primary w20 mt-3" />
+            </div>
+        </form>
+    </div>
 </body>
 </html>
 

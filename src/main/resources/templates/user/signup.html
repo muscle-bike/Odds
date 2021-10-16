@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <th:block th:insert="/fragments/head :: head"></th:block>
-  <link rel="stylesheet" th:href="@{/css/user/signup.css}">
-  <title>ユーザー登録</title>
+<th:block th:insert="/fragments/head :: head"></th:block>
+<link rel="stylesheet" th:href="@{/css/user/signup.css}">
+<title>ユーザー登録</title>
 </head>
 
 <body class="bg-light">
 
-  <h1 class="text-center">新規登録</h1>
+    <h1 class="text-center">新規登録</h1>
 
-  <form id="signup-form" class="form-signup" th:method="post" th:action="@{/user/create}" th:object="${userRequest}">
+    <form id="signup-form" class="form-signup" th:method="post"
+        th:action="@{/user/create}" th:object="${userRequest}">
 
-    <!-- ユーザーID -->
-    <div class="form-group">
-      <label for="username">
-      <input type="text" th:field="*{name}" class="form-control"  placeholder="ユーザーネーム"/>
-      <!-- エラーがあれば表示 -->
-      <span class="text-danger"
-            th:if="${#fields.hasErrors('name')}"
-            th:errors="*{name}">
-      </span>
-      </label>
-    </div>
+        <!-- ユーザーID -->
+        <div class="form-group">
+            <label for="username"> <input type="text" th:field="*{name}"
+                class="form-control" placeholder="ユーザーネーム" /> <!-- エラーがあれば表示 --> <span
+                class="text-danger" th:if="${#fields.hasErrors('name')}"
+                th:errors="*{name}"> </span>
+            </label>
+        </div>
 
-    <!-- パスワード -->
-    <div class="form-group">
-      <label for="password">
-      <input type="password" th:field="*{password}" class="form-control"  placeholder="パスワード"/>
-      <!-- エラーがあれば表示 -->
-      <span class="text-danger"
-            th:if="${#fields.hasErrors('password')}"
-            th:errors="*{password}">
-      </span>
-      </label>
-    </div>
+        <!-- パスワード -->
+        <div class="form-group">
+            <label for="password"> <input type="password"
+                th:field="*{password}" class="form-control" placeholder="パスワード" /> <!-- エラーがあれば表示 -->
+                <span class="text-danger" th:if="${#fields.hasErrors('password')}"
+                th:errors="*{password}"> </span>
+            </label>
+        </div>
 
-    <!-- 登録ボタン -->
-    <div class="btn-container">
-        <input type="submit" value="ユーザー登録" class="btn btn-primary w-100 mt-3" />
-    </div>
-  </form>
+        <!-- 登録ボタン -->
+        <div class="btn-container">
+            <input type="submit" value="ユーザー登録"
+                class="btn btn-primary w-100 mt-3" />
+        </div>
+    </form>
 </body>
 </html>
 

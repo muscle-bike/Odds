@@ -7,10 +7,12 @@ body {
 .text-center {
     margin: 100px 0 50px 0;
 }
+
 .form-group {
     width: 25%;
     margin: 0 auto;
 }
+
 label {
     width: 100%;
     margin-bottom: 50px;
@@ -27,11 +29,6 @@ label {
     border: 1px solid #1b2538;
     border-radius: 4px;
 }
-/* .userId input[type='text']:focus {
-    border: 1px solid #da3c41;
-    outline: none;
-    box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
-}  */
 
 .btn-container {
     width: 25%;

@@ -1,52 +1,54 @@
 @charset "UTF-8";
+
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 
 body {
-    width  : 1090px;
-    margin : 0 auto;
+    width: 1090px;
+    margin: 0 auto;
 }
 
 h1 {
-    width : 100%;
+    width: 100%;
     margin: 50px 0 50px 0;
 }
 
 form {
-    width  : 20%;
-    margin : 0 auto;
+    width: 20%;
+    margin: 0 auto;
 }
 
 #login-form {
-    height         : 30px;
-    display        : flex;
+    height: 30px;
+    display: flex;
     justify-content: center;
-    margin-bottom  : 20px;
+    margin-bottom: 20px;
 }
 
 #login-form span {
-    display        : flex;
-    background     : #CCCCCC;
-    border-radius  : 3px 0px 0px 3px;
-    border-right   : 1px solid #434a52;
-    color          : #606468;
-    text-align     : center;
-    width          : 50px;
-    height         : 100%;
+    display: flex;
+    background: #CCCCCC;
+    border-radius: 3px 0px 0px 3px;
+    border-right: 1px solid #434a52;
+    color: #606468;
+    text-align: center;
+    width: 50px;
+    height: 100%;
     justify-content: center;
-    flex-direction : column;
+    flex-direction: column;
 }
+
 #login-form input {
-    height         : 100%;
-    font           : 15px/24px sans-serif;
-    box-sizing     : border-box;
-    padding        : 0.3em;
-    transition     : 0.2s;
-    letter-spacing : 1px;
-    color          : #000;
+    height: 100%;
+    font: 15px/24px sans-serif;
+    box-sizing: border-box;
+    padding: 0.3em;
+    transition: 0.2s;
+    letter-spacing: 1px;
+    color: #000;
 }
 
 .btn-primary {
-    width : 100%;
+    width: 100%;
 }
 
 a {
@@ -54,23 +56,24 @@ a {
 }
 
 a:hover {
-    color          : #fff;
+    color: #fff;
     text-decoration: none;
 }
 
 .btn-a {
-    width         : 20%;
-    display       : inline-block;
-    border-radius : 5%;
-    font-size     : 13pt;
-    text-align    : center;
-    cursor        : pointer;
-    padding       : 12px 12px;
-    background    : #00CC00;
-    color         : #fff;
-    line-height   : 1em;
-    transition    : .3s;
+    width: 20%;
+    display: inline-block;
+    border-radius: 5%;
+    font-size: 13pt;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px 12px;
+    background: #00CC00;
+    color: #fff;
+    line-height: 1em;
+    transition: .3s;
 }
+
 .btn-a:hover {
-    background    : #00BB00;
+    background: #00BB00;
 }

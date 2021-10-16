@@ -34,16 +34,6 @@ public class UserService {
   }
 
   /**
-   * ユーザー名に紐付くUser(Entity)クラスのデータを1件取得する.
-   *
-   * @param username ユーザー名
-   * @return 該当した1件のデータ
-   */
-//  public List<UserModel> searchOne(){
-//      return userRepository.findOne();
-//  }
-
-  /**
    * ユーザー情報 新規登録
    * @param user ユーザー情報
    */

@@ -18,6 +18,7 @@ import com.portfolio.file.model.RacingModel;
 import com.portfolio.file.model.impl.UserDetailsImpl;
 import com.portfolio.file.repository.RacingRepository;
 import com.portfolio.file.repository.RacingRepository.RateAllsum;
+
 @Controller
 public class HomeController {
     @Autowired
@@ -54,15 +55,15 @@ public class HomeController {
         // 月初
         Calendar stertdate1 = Calendar.getInstance();
         stertdate1.set(Calendar.YEAR, yearMonth[0]);
-        stertdate1.set(Calendar.MONTH, yearMonth[1] - 1 );
-        stertdate1.set(Calendar.DATE,    1 - 1);
+        stertdate1.set(Calendar.MONTH, yearMonth[1] - 1);
+        stertdate1.set(Calendar.DATE, 1 - 1);
         Date stertdate = new Date();
         stertdate = stertdate1.getTime();
 
         // 月末
         Calendar enddate1 = Calendar.getInstance();
         enddate1.set(Calendar.YEAR, yearMonth[0]);
-        enddate1.set(Calendar.MONTH,yearMonth[1] - 1);
+        enddate1.set(Calendar.MONTH, yearMonth[1] - 1);
         int endOfManth = enddate1.getActualMaximum(Calendar.DAY_OF_MONTH);
         enddate1.set(Calendar.DATE, endOfManth);
         Date enddate = new Date();
@@ -73,8 +74,8 @@ public class HomeController {
         List<RacingModel> infos = racingRepository.findAllOrderByAllDate(loginUser, stertdate, enddate);
         model.addAttribute("infos", infos);
         dateRequest.setTAB01("TAB01");
-    return "home/home";
-}
+        return "home/home";
+    }
 
     // 月間の合計
     @GetMapping("/month")
@@ -89,15 +90,15 @@ public class HomeController {
         // 月初
         Calendar stertdate1 = Calendar.getInstance();
         stertdate1.set(Calendar.YEAR, yearMonth[0]);
-        stertdate1.set(Calendar.MONTH, yearMonth[1] - 1 );
-        stertdate1.set(Calendar.DATE,    1 - 1);
+        stertdate1.set(Calendar.MONTH, yearMonth[1] - 1);
+        stertdate1.set(Calendar.DATE, 1 - 1);
         Date stertdate = new Date();
         stertdate = stertdate1.getTime();
 
         // 月末
         Calendar enddate1 = Calendar.getInstance();
         enddate1.set(Calendar.YEAR, yearMonth[0]);
-        enddate1.set(Calendar.MONTH,yearMonth[1] - 1);
+        enddate1.set(Calendar.MONTH, yearMonth[1] - 1);
         int endOfManth = enddate1.getActualMaximum(Calendar.DAY_OF_MONTH);
         enddate1.set(Calendar.DATE, endOfManth);
         Date enddate = new Date();
@@ -111,8 +112,8 @@ public class HomeController {
         rateAllsum.getIncomesum();
         model.addAttribute("monthinfos", monthinfos);
         dateRequest.setTAB01("TAB02");
-    return "home/home";
-}
+        return "home/home";
+    }
 
     // 年間の合計
     @GetMapping("/year")
@@ -126,15 +127,15 @@ public class HomeController {
 
         //年始
         Calendar stertdate1 = Calendar.getInstance();
-        stertdate1.set(Calendar.YEAR,   yearMonth[0]);
-        stertdate1.set(Calendar.MONTH,  1 - 1);
-        stertdate1.set(Calendar.DATE,   1 - 1);
+        stertdate1.set(Calendar.YEAR, yearMonth[0]);
+        stertdate1.set(Calendar.MONTH, 1 - 1);
+        stertdate1.set(Calendar.DATE, 1 - 1);
         Date stertdate = new Date();
         stertdate = stertdate1.getTime();
         //年末
         Calendar enddate1 = Calendar.getInstance();
-        enddate1.set(Calendar.YEAR,    yearMonth[0]);
-        enddate1.set(Calendar.MONTH,   12 - 1);
+        enddate1.set(Calendar.YEAR, yearMonth[0]);
+        enddate1.set(Calendar.MONTH, 12 - 1);
         int endOfManth = enddate1.getActualMaximum(Calendar.DAY_OF_MONTH);
         enddate1.set(Calendar.DATE, endOfManth);
         Date enddate = new Date();
@@ -148,7 +149,6 @@ public class HomeController {
         rateAllsum.getIncomesum();
         model.addAttribute("yearinfos", yearinfos);
         dateRequest.setTAB01("TAB03");
-    return "home/home";
+        return "home/home";
+    }
 }
-}
-

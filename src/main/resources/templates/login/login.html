@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:insert="/fragments/head :: head"></th:block>
-    <link rel="stylesheet" th:href="@{/css/login/login.css}">
-    <title>ログイン</title>
+<th:block th:insert="/fragments/head :: head"></th:block>
+<link rel="stylesheet" th:href="@{/css/login/login.css}">
+<title>ログイン</title>
 </head>
 <body class="text-center">
     <h1>LOG IN</h1>
     <p th:if="${param.error}">ログインに失敗しました</p>
     <form method="post" th:action="@{/login}">
-    <!-- ユーザーネーム -->
+        <!-- ユーザーネーム -->
         <div id=login-form>
-        <span class="far fa-user fa-border icon"></span>
-        <input type="text" placeholder="ユーザーネーム" name="username" /><br/>
+            <span class="far fa-user fa-border icon"></span> <input type="text"
+                placeholder="ユーザーネーム" name="username" /><br />
         </div>
         <br />
-     <!-- パスワード -->
+        <!-- パスワード -->
         <div id=login-form>
-        <span class="fas fa-key fa-border icon"></span>
-        <input type="password" placeholder="パスワード" name="password" /><br/>
+            <span class="fas fa-key fa-border icon"></span> <input
+                type="password" placeholder="パスワード" name="password" /><br />
         </div>
         <br />
 
-    <!-- ログインボタン -->
+        <!-- ログインボタン -->
         <button class="btn btn-primary" type="submit">ログイン</button>
     </form>
     <br />
     <!-- 新規登録 -->
     <div class="btn-a">
-    <a th:href="@{'/user/signup'}">新規登録はこちら</a>
+        <a th:href="@{'/user/signup'}">新規登録はこちら</a>
     </div>
 </body>
 </html>
