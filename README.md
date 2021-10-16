@@ -38,9 +38,14 @@ Spring Bootで開発した金銭管理アプリです。
 ・　Lombok 1.18.20　
 
 ## Setup
-
-・ git clone https://github.com/muscle-bike/Odds.git
-・ http://localhost:8080/login　にアクセスしてログイン画面を表示
+1.git　clone
+```
+git clone https://github.com/muscle-bike/Odds.git
+```
+2.下記のURLにアクセスしてログイン画面を表示
+```
+http://localhost:8080/login　
+```
 
 ## License
 
